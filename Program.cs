@@ -17,7 +17,6 @@ namespace GIK299_Projekt_Blogg
                 Console.WriteLine("E. Exit.");
                 string menySwitch = Console.ReadLine();
                 Console.WriteLine();
-                Console.WriteLine();
                 switch (menySwitch)
                 {
                     case "1":
@@ -53,4 +52,4 @@ namespace GIK299_Projekt_Blogg
             OurBlogg.AddEntry(NewEntry);
         }
     }
-}//asda
+}
