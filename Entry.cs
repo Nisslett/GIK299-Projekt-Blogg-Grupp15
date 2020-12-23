@@ -4,6 +4,7 @@ namespace GIK299_Projekt_Blogg
 {
     public class Entry
     {
+        public int GlobalEntryInt;
         public DateTime TimeOfEntry;
         public string Title;
 
@@ -23,5 +24,15 @@ namespace GIK299_Projekt_Blogg
         {
             Console.WriteLine($"TimeOfEntry:{TimeOfEntry}\nTitle: {Title}\nAuthor: {Author}\nText: {Text}");
         }
+
+        public static int DateCompare(Entry entA,Entry entB)
+        {
+            return entA.TimeOfEntry.CompareTo(entB.TimeOfEntry);
+        }
+
+        public override string ToString()
+                {
+                    return ""; // TODO
+                }
     }
 }

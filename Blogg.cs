@@ -21,13 +21,50 @@ namespace GIK299_Projekt_Blogg
             if (EntryList.Count == 0)
             {
                 Console.WriteLine("No entries added.");
-                //return;
             }
             
             for (int i = 0; i < EntryList.Count; i++)
             {
                 EntryList[i].ConsolePrint();
             }
+
+            //Entry newEntry=new Entry("","","");
+        }
+
+        public int NumberOfEntries()
+        {
+            //TODO
+            return 0;
+        }
+
+        public void RemoveEntry( Entry ent)
+        {
+            EntryList.Remove(ent);
+        }
+
+        public void RemoveEntry( int index)
+        {
+            EntryList.RemoveAt(index);
+        }
+        
+        public void SortDateTime()
+        {
+            EntryList.Sort(Entry.DateCompare);
+        }
+        public Entry Search(string title)
+        {
+            //TODO
+            return new Entry("","",""); //temporärt
+        }
+
+        public void SaveToFile()
+        {
+            //TODO
+        }
+
+        public void LoadFromFile()
+        {
+            //TODO
         }
     }
 }
