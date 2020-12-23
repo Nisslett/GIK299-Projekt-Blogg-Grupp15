@@ -52,4 +52,4 @@ namespace GIK299_Projekt_Blogg
             OurBlogg.AddEntry(NewEntry);
         }
     }
-}
+}//asda
