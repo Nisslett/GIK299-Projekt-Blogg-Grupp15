@@ -47,9 +47,16 @@ namespace GIK299_Projekt_Blogg
             EntryList.RemoveAt(index);
         }
         
-        public void SortDateTime()
+        public void SortDateTime(bool c)
         {
-            EntryList.Sort(Entry.DateCompare);
+            if(c)
+            {
+                EntryList.Sort(Entry.DateCompare);
+            }
+            else
+            {
+                EntryList.Sort(Entry.DateCompareReverse);
+            }
         }
         public Entry Search(string title)
         {

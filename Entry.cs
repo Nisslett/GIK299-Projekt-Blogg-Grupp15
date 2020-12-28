@@ -27,8 +27,23 @@ namespace GIK299_Projekt_Blogg
 
         public static int DateCompare(Entry entA,Entry entB)
         {
+            int value=entA.TimeOfEntry.CompareTo(entB.TimeOfEntry);
+            if(value>0)
+            {
+                return -1;
+            }
+            if(value<0)
+            {
+                return 1;
+            }
+            return 0;
+        }
+
+        public static int DateCompareReverse(Entry entA,Entry entB)
+        {
             return entA.TimeOfEntry.CompareTo(entB.TimeOfEntry);
         }
+
 
         public override string ToString()
                 {
