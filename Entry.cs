@@ -22,7 +22,7 @@ namespace GIK299_Projekt_Blogg
 
         public void ConsolePrint()
         {
-            Console.WriteLine($"TimeOfEntry:{TimeOfEntry}\nTitle: {Title}\nAuthor: {Author}\nText: {Text}");
+            Console.WriteLine($"TimeOfEntry: {TimeOfEntry}\nTitle: {Title}\nAuthor: {Author}\nText: {Text}");
         }
 
         public static int DateCompare(Entry entA,Entry entB)

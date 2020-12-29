@@ -58,10 +58,17 @@ namespace GIK299_Projekt_Blogg
                 EntryList.Sort(Entry.DateCompareReverse);
             }
         }
-        public Entry Search(string title)
+        public List<Entry> Search(string title)
         {
-            //TODO
-            return new Entry("","",""); //temporärt
+            List<Entry> foundList=new List<Entry>();
+            for (int i = 0; i < EntryList.Count; i++)
+            {
+                if (EntryList[i].Title.ToLower().Contains(title.ToLower()))
+                {
+                    foundList.Add(EntryList[i]);
+                }
+            }
+            return foundList;
         }
 
         public void SaveToFile()

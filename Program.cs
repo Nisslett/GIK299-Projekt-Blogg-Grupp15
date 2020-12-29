@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 namespace GIK299_Projekt_Blogg
 {
     class Program
@@ -15,8 +16,9 @@ namespace GIK299_Projekt_Blogg
                 Console.WriteLine("1. Add an entry to the blogg.");
                 Console.WriteLine("2. Print all blogg entries.");
                 Console.WriteLine("3. Sort.");
+                Console.WriteLine("4. Seach in the blogg");
                 Console.WriteLine("E. Exit.");
-                string menySwitch = Console.ReadLine();
+                string menySwitch = Console.ReadLine().ToUpper();
                 Console.WriteLine();
                 switch (menySwitch)
                 {
@@ -29,6 +31,11 @@ namespace GIK299_Projekt_Blogg
                         break;
                     case "3":
                         SortMenu();
+                        break;
+                        
+                    case "4":
+                        SearchBlogg();
+                        Console.ReadLine();
                         break;
                     case "E":
                         Console.WriteLine("Exitting program!");
@@ -97,6 +104,23 @@ namespace GIK299_Projekt_Blogg
             {
                 OurBlogg.SortDateTime(false);
             }
+        }
+
+        private static void SearchBlogg(){
+            Console.WriteLine("Type in the title you are searching for:");
+            List<Entry> found=OurBlogg.Search(Console.ReadLine());
+            if(found.Count==0)
+            {
+                Console.WriteLine("No Entry found in the search!");
+            }
+            else
+            {
+                for (int i = 0; i < found.Count; i++) 
+                {
+                    found[i].ConsolePrint();
+                }
+            }
+
         }
     }
 }
