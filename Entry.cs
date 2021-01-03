@@ -4,13 +4,11 @@ namespace GIK299_Projekt_Blogg
 {
     public class Entry
     {
-        public int GlobalEntryInt { get; set; }
-        public DateTime TimeOfEntry { get; set; }
-        public string Title { get; set; }
-
-        public string Author { get; set; }
-
-        public string Text { get; set; }
+        public int GlobalEntryInt; 
+        public DateTime TimeOfEntry; 
+        public string Title;
+        public string Author;
+        public string Text;
 
         public Entry(string title, string author, string text)
         {

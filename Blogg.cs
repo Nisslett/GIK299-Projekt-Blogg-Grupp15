@@ -30,16 +30,7 @@ namespace GIK299_Projekt_Blogg
             {
                 EntryList[i].ConsolePrint();
             }
-
-            //Entry newEntry=new Entry("","","");
         }
-
-        public int NumberOfEntries()
-        {
-            //TODO
-            return 0;
-        }
-
         public void RemoveEntry(Entry ent)
         {
             EntryList.Remove(ent);

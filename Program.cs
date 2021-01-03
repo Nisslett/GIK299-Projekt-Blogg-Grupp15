@@ -33,14 +33,12 @@ namespace GIK299_Projekt_Blogg
                     case "3":
                         SortMenu();
                         break;
-
                     case "4":
                         SearchBlogg();
                         Console.ReadLine();
                         break;
                     case "E":
                         Console.WriteLine("Exitting program!");
-                        // ending Program
                         break;
                     default:
                         Console.WriteLine("Invalid input try again!");
@@ -56,15 +54,6 @@ namespace GIK299_Projekt_Blogg
             OurBlogg.SaveToFile();
         }
 
-        // private static int InputInteger()
-        // {
-        //     int input;
-        //     while (!int.TryParse(Console.ReadLine(), out input))
-        //     {
-        //         Console.WriteLine("Not a valid integer try again!");
-        //     }
-        //     return input;
-        // }
 
         private static string InputString()
         {
@@ -114,11 +103,12 @@ namespace GIK299_Projekt_Blogg
         private static void SortMenu()
         {
             string choice;
-            do
+            while (true)
             {
                 Console.Clear();
                 Console.WriteLine("1. Sort from newest to oldest");
                 Console.WriteLine("2. Sort from oldest to newest");
+                Console.WriteLine("3. Return to menu.");
                 choice = InputString();
                 switch (choice)
                 {
@@ -128,18 +118,25 @@ namespace GIK299_Projekt_Blogg
                     case "2":
                         OurBlogg.SortDateTime(false);
                         break;
+                    case "3":
+                        Console.WriteLine("Returning to menu");
+                        break;
                     default:
                         Console.WriteLine("Invalid choice try again!");
-                    Console.ReadLine();
+                        Console.ReadLine();
                         break;
                 }
-            } while (choice != "1" || choice != "2");
+                if (choice == "3")
+                {
+                    break;
+                }
+            }
         }
 
-       private static void SearchBlogg()
+        private static void SearchBlogg()
         {
             string choice;
-            while(true)
+            while (true)
             {
                 Console.Clear();
                 Console.WriteLine("1. Search by title.");
@@ -181,7 +178,7 @@ namespace GIK299_Projekt_Blogg
                         Console.ReadLine();
                         break;
                     case "3":
-                    
+                        Console.WriteLine("Returning to menu");
                         break;
                     default:
                         Console.WriteLine("Invalid choice try again!");
@@ -193,8 +190,8 @@ namespace GIK299_Projekt_Blogg
                     break;
                 }
 
-            } 
-            
-        }  
+            }
+
+        }
     }
 }
