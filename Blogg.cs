@@ -1,7 +1,7 @@
 using System;
 using System.Collections.Generic;
 using System.IO;
-using System.Text.Json;
+//using System.Text.Json;
 
 namespace GIK299_Projekt_Blogg
 {
@@ -9,7 +9,7 @@ namespace GIK299_Projekt_Blogg
     {
         private List<Entry> EntryList;
 
-        private string FileName = "Blogg.json";
+        private string FileName = "Blogg.txt";
         public Blogg()
         {
             EntryList = new List<Entry>();
@@ -76,31 +76,65 @@ namespace GIK299_Projekt_Blogg
 
         public void SaveToFile()
         {
-
-            if (EntryList.Count > 0)
+            using (StreamWriter sw = File.CreateText(FileName))
             {
-                string jsonStr = JsonSerializer.Serialize(EntryList);
-                using (StreamWriter sw = File.CreateText(FileName))
+                for (int i = 0; i < EntryList.Count; i++)
                 {
-                    sw.WriteLine(jsonStr);
-                    sw.Close();
+                    sw.WriteLine(EntryList[i].TimeOfEntry);
+                    sw.WriteLine(EntryList[i].Title);
+                    sw.WriteLine(EntryList[i].Author);
+                    sw.WriteLine(EntryList[i].Text.Replace("\n", "\\n"));
                 }
+                sw.Close();
             }
-
         }
 
         public void LoadFromFile()
         {
             if (File.Exists(FileName))
             {
-                string jsonstr;
+                List<Entry> loadedlist = new List<Entry>();
                 using (StreamReader sr = File.OpenText(FileName))
                 {
-                    jsonstr = sr.ReadToEnd();
+                    int items;
+                    do
+                    {
+                        string[] readstr = new string[4];
+                        items = 0;
+                        for (int i = 0; i < 4; i++)
+                        {
+                            if (!sr.EndOfStream)
+                            {
+                                readstr[i] = sr.ReadLine();
+                                items = i;
+                            }
+                            else
+                            {
+                                items = 0;
+                                break;
+                            }
+                        }
+                        if (items != 0)
+                        {
+                            Entry newent = new Entry();
+                            DateTime newDT;
+                            if (!DateTime.TryParse(readstr[0], out newDT))
+                            {
+                                sr.Close();
+                                Console.WriteLine($"\nError Could Not Load List from file \"{FileName}\"!\nDateTime Parse failed!");
+                                Console.ReadLine();
+                                return;
+                            }
+                            newent.TimeOfEntry = newDT;
+                            newent.Title = readstr[1];
+                            newent.Author = readstr[2];
+                            newent.Text = readstr[3].Replace("\\n", "\n");
+                            loadedlist.Add(newent);
+                        }
+                    } while (items != 0);
                     sr.Close();
                 }
-                List<Entry> dejsonfile = JsonSerializer.Deserialize<List<Entry>>(jsonstr);
-                EntryList = dejsonfile;
+                EntryList = loadedlist;
             }
         }
     }

@@ -56,15 +56,15 @@ namespace GIK299_Projekt_Blogg
             OurBlogg.SaveToFile();
         }
 
-        private static int InputInteger()
-        {
-            int input;
-            while (!int.TryParse(Console.ReadLine(), out input))
-            {
-                Console.WriteLine("Not a valid integer try again!");
-            }
-            return input;
-        }
+        // private static int InputInteger()
+        // {
+        //     int input;
+        //     while (!int.TryParse(Console.ReadLine(), out input))
+        //     {
+        //         Console.WriteLine("Not a valid integer try again!");
+        //     }
+        //     return input;
+        // }
 
         private static string InputString()
         {
@@ -99,7 +99,7 @@ namespace GIK299_Projekt_Blogg
                 }
                 else
                 {
-                    emptyCount=0;
+                    emptyCount = 0;
                     if (!String.IsNullOrEmpty(text))
                     {
                         text = text + "\n";
@@ -113,19 +113,27 @@ namespace GIK299_Projekt_Blogg
 
         private static void SortMenu()
         {
-            Console.Clear();
-            Console.WriteLine("1. Sort from newest to oldest");
-            Console.WriteLine("2. Sort from oldest to newest");
-            int choice = InputInteger();
-
-            if (choice == 1)
+            string choice;
+            do
             {
-                OurBlogg.SortDateTime(true);
-            }
-            else if (choice == 2)
-            {
-                OurBlogg.SortDateTime(false);
-            }
+                Console.Clear();
+                Console.WriteLine("1. Sort from newest to oldest");
+                Console.WriteLine("2. Sort from oldest to newest");
+                choice = InputString();
+                switch (choice)
+                {
+                    case "1":
+                        OurBlogg.SortDateTime(true);
+                        break;
+                    case "2":
+                        OurBlogg.SortDateTime(false);
+                        break;
+                    default:
+                        Console.WriteLine("Invalid choice try again!");
+                    Console.ReadLine();
+                        break;
+                }
+            } while (choice != "1" || choice != "2");
         }
 
         private static void SearchBlogg()
