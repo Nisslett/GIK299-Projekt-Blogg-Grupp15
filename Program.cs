@@ -34,7 +34,7 @@ namespace GIK299_Projekt_Blogg
                         SortMenu();
                         break;
                     case "4":
-                        SearchBlogg();
+                        SearchBloggMenu();
                         Console.ReadLine();
                         break;
                     case "E":
@@ -68,7 +68,6 @@ namespace GIK299_Projekt_Blogg
             } while (string.IsNullOrEmpty(input));
             return input;
         }
-
         private static void MakeNewEntry()
         {
             Console.WriteLine("Input the blogg entry's author name:");
@@ -98,8 +97,6 @@ namespace GIK299_Projekt_Blogg
             }
             OurBlogg.AddEntry(new Entry(title, author, text));
         }
-
-
         private static void SortMenu()
         {
             string choice;
@@ -132,8 +129,7 @@ namespace GIK299_Projekt_Blogg
                 }
             }
         }
-
-        private static void SearchBlogg()
+        private static void SearchBloggMenu()
         {
             string choice;
             while (true)
@@ -146,35 +142,11 @@ namespace GIK299_Projekt_Blogg
                 switch (choice)
                 {
                     case "1":
-                        Console.WriteLine("Type in the title you are searching for:");
-                        List<Entry> foundTitle = OurBlogg.SearchTitle(InputString());
-                        if (foundTitle.Count == 0)
-                        {
-                            Console.WriteLine("No Entry found in the search!");
-                        }
-                        else
-                        {
-                            for (int i = 0; i < foundTitle.Count; i++)
-                            {
-                                foundTitle[i].ConsolePrint();
-                            }
-                        }
+                        SearchBloggTitle();
                         Console.ReadLine();
                         break;
                     case "2":
-                        Console.WriteLine("Type in the author you are searching for:");
-                        List<Entry> foundAuthor = OurBlogg.SearchAuthor(InputString());
-                        if (foundAuthor.Count == 0)
-                        {
-                            Console.WriteLine("No Entry found in the search!");
-                        }
-                        else
-                        {
-                            for (int i = 0; i < foundAuthor.Count; i++)
-                            {
-                                foundAuthor[i].ConsolePrint();
-                            }
-                        }
+                        SearchBloggAuthor();
                         Console.ReadLine();
                         break;
                     case "3":
@@ -189,9 +161,39 @@ namespace GIK299_Projekt_Blogg
                 {
                     break;
                 }
-
             }
-
+        }
+        private static void SearchBloggTitle()
+        {
+            Console.WriteLine("Type in the title you are searching for:");
+            List<Entry> foundTitle = OurBlogg.SearchTitle(InputString());
+            if (foundTitle.Count == 0)
+            {
+                Console.WriteLine("No Entry found in the search!");
+            }
+            else
+            {
+                for (int i = 0; i < foundTitle.Count; i++)
+                {
+                    foundTitle[i].ConsolePrint();
+                }
+            }
+        }
+        private static void SearchBloggAuthor()
+        {
+            Console.WriteLine("Type in the author you are searching for:");
+            List<Entry> foundAuthor = OurBlogg.SearchAuthor(InputString());
+            if (foundAuthor.Count == 0)
+            {
+                Console.WriteLine("No Entry found in the search!");
+            }
+            else
+            {
+                for (int i = 0; i < foundAuthor.Count; i++)
+                {
+                    foundAuthor[i].ConsolePrint();
+                }
+            }
         }
     }
 }

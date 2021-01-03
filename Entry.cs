@@ -48,10 +48,5 @@ namespace GIK299_Projekt_Blogg
         {
             return entA.TimeOfEntry.CompareTo(entB.TimeOfEntry);
         }
-
-        public override string ToString()
-        {
-            return ""; // TODO
-        }
     }
 }

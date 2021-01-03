@@ -1,7 +1,6 @@
 using System;
 using System.Collections.Generic;
 using System.IO;
-//using System.Text.Json;
 
 namespace GIK299_Projekt_Blogg
 {
