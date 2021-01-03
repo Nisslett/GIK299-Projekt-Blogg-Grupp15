@@ -136,22 +136,65 @@ namespace GIK299_Projekt_Blogg
             } while (choice != "1" || choice != "2");
         }
 
-        private static void SearchBlogg()
+       private static void SearchBlogg()
         {
-            Console.WriteLine("Type in the title you are searching for:");
-            List<Entry> found = OurBlogg.Search(InputString());
-            if (found.Count == 0)
+            string choice;
+            while(true)
             {
-                Console.WriteLine("No Entry found in the search!");
-            }
-            else
-            {
-                for (int i = 0; i < found.Count; i++)
+                Console.Clear();
+                Console.WriteLine("1. Search by title.");
+                Console.WriteLine("2. Search by author.");
+                Console.WriteLine("3. Return to menu.");
+                choice = InputString();
+                switch (choice)
                 {
-                    found[i].ConsolePrint();
+                    case "1":
+                        Console.WriteLine("Type in the title you are searching for:");
+                        List<Entry> foundTitle = OurBlogg.SearchTitle(InputString());
+                        if (foundTitle.Count == 0)
+                        {
+                            Console.WriteLine("No Entry found in the search!");
+                        }
+                        else
+                        {
+                            for (int i = 0; i < foundTitle.Count; i++)
+                            {
+                                foundTitle[i].ConsolePrint();
+                            }
+                        }
+                        Console.ReadLine();
+                        break;
+                    case "2":
+                        Console.WriteLine("Type in the author you are searching for:");
+                        List<Entry> foundAuthor = OurBlogg.SearchAuthor(InputString());
+                        if (foundAuthor.Count == 0)
+                        {
+                            Console.WriteLine("No Entry found in the search!");
+                        }
+                        else
+                        {
+                            for (int i = 0; i < foundAuthor.Count; i++)
+                            {
+                                foundAuthor[i].ConsolePrint();
+                            }
+                        }
+                        Console.ReadLine();
+                        break;
+                    case "3":
+                    
+                        break;
+                    default:
+                        Console.WriteLine("Invalid choice try again!");
+                        Console.ReadLine();
+                        break;
                 }
-            }
+                if (choice == "3")
+                {
+                    break;
+                }
 
-        }
+            } 
+            
+        }  
     }
 }

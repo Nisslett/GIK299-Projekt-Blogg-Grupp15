@@ -1,0 +1,13 @@
+C:\Users\adams\Desktop\GIK299-Projekt-Blogg\bin\Debug\netcoreapp3.1\GIK299-Projekt-Blogg.exe
+C:\Users\adams\Desktop\GIK299-Projekt-Blogg\bin\Debug\netcoreapp3.1\GIK299-Projekt-Blogg.deps.json
+C:\Users\adams\Desktop\GIK299-Projekt-Blogg\bin\Debug\netcoreapp3.1\GIK299-Projekt-Blogg.runtimeconfig.json
+C:\Users\adams\Desktop\GIK299-Projekt-Blogg\bin\Debug\netcoreapp3.1\GIK299-Projekt-Blogg.runtimeconfig.dev.json
+C:\Users\adams\Desktop\GIK299-Projekt-Blogg\bin\Debug\netcoreapp3.1\GIK299-Projekt-Blogg.dll
+C:\Users\adams\Desktop\GIK299-Projekt-Blogg\bin\Debug\netcoreapp3.1\GIK299-Projekt-Blogg.pdb
+C:\Users\adams\Desktop\GIK299-Projekt-Blogg\obj\Debug\netcoreapp3.1\GIK299-Projekt-Blogg.csprojAssemblyReference.cache
+C:\Users\adams\Desktop\GIK299-Projekt-Blogg\obj\Debug\netcoreapp3.1\GIK299-Projekt-Blogg.AssemblyInfoInputs.cache
+C:\Users\adams\Desktop\GIK299-Projekt-Blogg\obj\Debug\netcoreapp3.1\GIK299-Projekt-Blogg.AssemblyInfo.cs
+C:\Users\adams\Desktop\GIK299-Projekt-Blogg\obj\Debug\netcoreapp3.1\GIK299-Projekt-Blogg.csproj.CoreCompileInputs.cache
+C:\Users\adams\Desktop\GIK299-Projekt-Blogg\obj\Debug\netcoreapp3.1\GIK299-Projekt-Blogg.dll
+C:\Users\adams\Desktop\GIK299-Projekt-Blogg\obj\Debug\netcoreapp3.1\GIK299-Projekt-Blogg.pdb
+C:\Users\adams\Desktop\GIK299-Projekt-Blogg\obj\Debug\netcoreapp3.1\GIK299-Projekt-Blogg.genruntimeconfig.cache

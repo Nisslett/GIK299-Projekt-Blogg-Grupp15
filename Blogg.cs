@@ -61,12 +61,25 @@ namespace GIK299_Projekt_Blogg
                 EntryList.Sort(Entry.DateCompareReverse);
             }
         }
-        public List<Entry> Search(string title)
+        public List<Entry> SearchTitle(string title)
         {
             List<Entry> foundList = new List<Entry>();
             for (int i = 0; i < EntryList.Count; i++)
             {
                 if (EntryList[i].Title.ToLower().Contains(title.ToLower()))
+                {
+                    foundList.Add(EntryList[i]);
+                }
+            }
+            return foundList;
+        }
+
+        public List<Entry> SearchAuthor(string author)
+        {
+            List<Entry> foundList = new List<Entry>();
+            for (int i = 0; i < EntryList.Count; i++)
+            {
+                if (EntryList[i].Author.ToLower().Contains(author.ToLower()))
                 {
                     foundList.Add(EntryList[i]);
                 }
