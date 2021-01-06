@@ -84,15 +84,10 @@ namespace GIK299_Projekt_Blogg
             if (EntryList.Count > 0)
             {
                 //encodes our EntryList into a string with JsonSerializer
-                string jsonStr = JsonSerializer.Serialize(EntryList);
-                //opens a file to write the serlized string to
-                using (StreamWriter sw = File.CreateText(FileName))
-                {
-                    //writes the string
-                    sw.WriteLine(jsonStr);
-                    //closes the StreamWriter link to the file
-                    sw.Close();
-                }
+                string jsonString = JsonSerializer.Serialize(EntryList);
+                //Writes all contents of the Specifed string (jsonStr) 
+                //to the specifed file (Filename)
+                File.WriteAllText(FileName, jsonString);
             }
 
         }
@@ -101,16 +96,10 @@ namespace GIK299_Projekt_Blogg
         {
             if (File.Exists(FileName))
             {
-                //temporary string to store all the text in the json file
-                string jsonstr;
-                using (StreamReader sr = File.OpenText(FileName))
-                {
-                    //reads in all the text from the file
-                    jsonstr = sr.ReadToEnd();
-                    sr.Close();
-                }
+                //Reads in all text in the specified File (FileName) and stores it in the jsonString
+                string jsonString = File.ReadAllText(FileName);
                 //decodes the string with JsonSerializer.Deserialize to a new List<Entry>
-                List<Entry> dejsonlist = JsonSerializer.Deserialize<List<Entry>>(jsonstr);
+                List<Entry> dejsonlist = JsonSerializer.Deserialize<List<Entry>>(jsonString);
                 //set the decodedlist to the bloggs current list
                 EntryList = dejsonlist;
             }
