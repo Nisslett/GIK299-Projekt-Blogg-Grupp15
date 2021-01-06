@@ -74,25 +74,29 @@ namespace GIK299_Projekt_Blogg
             string author = InputString();
             Console.WriteLine("Input the blogg entry's title:");
             string title = InputString();
-            Console.WriteLine("Input the blogg text content:");
-            int emptyCount = 0;
+            Console.WriteLine("Input the blogg text content (2 linebreaks \\n will exit this section):");
+            int newlineCount = 0;
             string text = "";
             string temporary_str = "";
-            while (emptyCount < 2)
+            while (newlineCount < 1)
             {
                 temporary_str = Console.ReadLine();
-                if (String.IsNullOrEmpty(temporary_str))
+                newlineCount++;
+                //if your input is NOT empty, enter this if-statement
+                if (!string.IsNullOrEmpty(temporary_str))
                 {
-                    emptyCount++;
-                }
-                else
-                {
-                    emptyCount = 0;
-                    if (!String.IsNullOrEmpty(text))
+
+                    if (String.IsNullOrEmpty(text))
                     {
-                        text = text + "\n";
+                        //makes is so the text doesn't start with a newline
+                        text += temporary_str;
                     }
-                    text = text + temporary_str;
+                    else if (newlineCount == 1)
+                    {
+                        // adds a linebreak
+                        text += "\n" + temporary_str;
+                    }
+                    newlineCount = 0;
                 }
             }
             OurBlogg.AddEntry(new Entry(title, author, text));
@@ -110,10 +114,10 @@ namespace GIK299_Projekt_Blogg
                 switch (choice)
                 {
                     case "1":
-                        OurBlogg.SortDateTime(true);
+                        OurBlogg.SortDateTime();
                         break;
                     case "2":
-                        OurBlogg.SortDateTime(false);
+                        OurBlogg.SortDateTimeReverse();
                         break;
                     case "3":
                         Console.WriteLine("Returning to menu");
