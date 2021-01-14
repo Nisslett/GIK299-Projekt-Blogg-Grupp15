@@ -9,7 +9,7 @@ namespace GIK299_Projekt_Blogg
     {
         private List<Entry> EntryList;
 
-        private string FileName = "Blogg.json";
+        private readonly string FileName = "Blogg.json";
         public Blogg()
         {
             EntryList = new List<Entry>();
@@ -28,7 +28,7 @@ namespace GIK299_Projekt_Blogg
 
             for (int i = 0; i < EntryList.Count; i++)
             {
-                EntryList[i].ConsolePrint();
+                Console.WriteLine(EntryList[i].ConsoleString());
                 //to make some more space
                 Console.WriteLine();
             }
@@ -45,11 +45,13 @@ namespace GIK299_Projekt_Blogg
 
         public void SortDateTime()
         {
-            EntryList.Sort(Entry.DateCompare);
+            //EntryList.Sort(Entry.DateCompare);
+            EntryList.Sort();
         }
         public void SortDateTimeReverse()
         {
-            EntryList.Sort(Entry.DateCompareReverse);
+            //EntryList.Sort(Entry.DateCompareReverse);
+            EntryList.Reverse();
         }
 
         public List<Entry> SearchTitle(string title)
@@ -80,7 +82,6 @@ namespace GIK299_Projekt_Blogg
 
         public void SaveToFile()
         {
-
             if (EntryList.Count > 0)
             {
                 //encodes our EntryList into a string with JsonSerializer
@@ -89,7 +90,6 @@ namespace GIK299_Projekt_Blogg
                 //to the specifed file (Filename)
                 File.WriteAllText(FileName, jsonString);
             }
-
         }
 
         public void LoadFromFile()
@@ -98,10 +98,8 @@ namespace GIK299_Projekt_Blogg
             {
                 //Reads in all text in the specified File (FileName) and stores it in the jsonString
                 string jsonString = File.ReadAllText(FileName);
-                //decodes the string with JsonSerializer.Deserialize to a new List<Entry>
-                List<Entry> dejsonlist = JsonSerializer.Deserialize<List<Entry>>(jsonString);
-                //set the decodedlist to the bloggs current list
-                EntryList = dejsonlist;
+                //decodes the string with JsonSerializer.Deserialize to a new List<Entry> and set the decoded list to the bloggs current list
+                EntryList = JsonSerializer.Deserialize<List<Entry>>(jsonString);
             }
         }
     }
